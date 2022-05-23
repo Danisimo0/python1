@@ -90,8 +90,6 @@ def calk(number1, operation, number2 = 10,):
     if operation == "///":
         return math.sqrt(number1)
 
-
-
 result = calk(9, "/",)
 print(result)
 

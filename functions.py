@@ -16,3 +16,4 @@ def say_hi(number):
     print("Я купил кота" + str(number))
 
 say_hi(12)
+say_hi(2)
