@@ -1,6 +1,6 @@
-import time
-import json
-import requests  # - библиотека для формирования HTTP - запроса
+# import time
+# import json
+# import requests  # - библиотека для формирования HTTP - запроса
 
 # грузить картинки
 # отправлять запросы
@@ -112,7 +112,6 @@ import requests  # - библиотека для формирования HTTP -
 # print(f"day: {day} | night: {night}")
 
 
-
 # photo = requests.get(url="https://jsonplaceholder.typicode.com/photos%22)
 # print((photo.json()))
 #
@@ -131,3 +130,4 @@ import requests  # - библиотека для формирования HTTP -
 #
 # def get(url):
 #     return None
+ 
