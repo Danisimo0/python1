@@ -110,3 +110,24 @@ import requests  # - библиотека для формирования HTTP -
 # night = new_data3[1].split(sep='<')[0]
 # day = new_data3[2].split(sep='<')[0]
 # print(f"day: {day} | night: {night}")
+
+
+
+# photo = requests.get(url="https://jsonplaceholder.typicode.com/photos%22)
+# print((photo.json()))
+#
+#
+# photos_list = photo.json()
+# for photo in photos_list:
+#     with open(f"python_photo/photo{photo['id']}.json", mode="w") as file:
+#         json.dump((photo), fp=file)
+#
+#
+#
+# with open("photo.json", mode="rb") as file:
+#     json1 = json1.load(file)
+#     print(json1)
+#
+#
+# def get(url):
+#     return None
