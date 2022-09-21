@@ -22,7 +22,7 @@ import os
 #
 #     response1 = requests.get(url=url, headers=headers)
 #     soup2 = BeautifulSoup(response1.text, 'html.parser')
-#     objs3 = soup2.find_all('span', {'class': 'unit unit_temperature_c'})
+#     objs3 = soup2.
 #     objs4 = [x.text.strip() for x in objs3]
 #     print(f"{city_name}: day: {objs4[3]} | night: {objs4[2]}\n")
 #     return f"{city_name}: day: {objs4[3]} | night: {objs4[2]}"
