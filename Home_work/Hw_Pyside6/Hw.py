@@ -1,96 +1,49 @@
-# from PySide6.QtWidgets import QApplication, QMainWindow, QPushButton, QLabel, QVBoxLayout, QWidget
-#
-# import sys
-#
-#
-# class MainWindow(QMainWindow):
-#
-#     def __init__(self):
-#         super().__init__()
-#         self.button = QPushButton("Push for Window")
-#         self.button.clicked.connect(self.show_new_window)
-#         self.setCentralWidget(self.button)
-#
-#     def show_new_window(self, checked):
-#
-#         w.show()
-#
-#
-# app = QApplication(sys.argv)
-# w = MainWindow()
-# w.show()
-# app.exec()
-
+from PySide6.QtWidgets import QApplication, QMainWindow, QPushButton, QLabel, QVBoxLayout, QWidget
 
 import sys
-import PySide6.QtWidgets as QtWidgets
-import PySide6.QtGui as QtGui
 
 
-class ExampleWindow(QtWidgets.QWidget):
-    def __init__(self, window_name: str):
+class Window(QMainWindow):
+
+    def __init__(self):
         super().__init__()
-
-        self.window_name = window_name
-        self.setGeometry(640, 480, 640, 480)
-        self.setWindowTitle(self.window_name)
-        self.layout = QtWidgets.QGridLayout()
-
-        btn_quit = QtWidgets.QPushButton('нажми меня', self)
-        btn_quit.clicked.connect(QtWidgets.QApplication.instance().quit)
-        self.layout.addWidget(btn_quit, 0, 0)
-
-        btn_1 = QtWidgets.QPushButton('', self)
-        btn_1.clicked.connect(self.get_value_from_QLineEdit)
-        self.layout.addWidget(btn_1, 0, 1)
-
-        lbl1 = QtWidgets.QLabel(text="id", parent=self)
-        self.layout.addWidget(lbl1, 1, 0)
-        self.txt1 = QtWidgets.QLineEdit("-1", parent=self)
-        self.layout.addWidget(self.txt1, 2, 0)
-
-        lbl2 = QtWidgets.QLabel(text="name", parent=self)
-        self.layout.addWidget(lbl2, 1, 1)
-        txt2 = QtWidgets.QLineEdit("2", parent=self)
-        self.layout.addWidget(txt2, 2, 1)
-
-        lbl3 = QtWidgets.QLabel(text="surname", parent=self)
-        self.layout.addWidget(lbl3, 1, 2)
-        txt3 = QtWidgets.QLineEdit("2", parent=self)
-        self.layout.addWidget(txt3, 2, 2)
-
-        lbl4 = QtWidgets.QLabel("age", parent=self)
-        self.layout.addWidget(lbl4, 1, 3)
-        txt4 = QtWidgets.QLineEdit("4", parent=self)
-        self.layout.addWidget(txt4, 2, 3)
-
-        lbl5 = QtWidgets.QLabel("salary", parent=self)
-        self.layout.addWidget(lbl5, 1, 4)
-        txt5 = QtWidgets.QLineEdit("5", self)
-        self.layout.addWidget(txt5, 2, 4)
-
-        self.setLayout(self.layout)
-
+        self.title = 'PyQt5'
+        self.initUI()
+        self.UiComponents()
+        self.setGeometry(100, 100, 600, 400)
         self.show()
 
-    def get_value_from_QLineEdit(self):
-        print(f"{self.txt1.text()}  !!!")
+    def initUI(self):
+        self.setWindowTitle(self.title)
 
-    def print_hello_world(self):
-        print(f"{self.window_name} hello!")
+        button = QPushButton('PyQt5 button', self)
 
-    def closeEvent(self, event: QtGui.QCloseEvent):
-        reply = QtWidgets.QMessageBox.question(self, 'Внимание', 'Вы действительно хотите выйти?',
-                                               QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No,
-                                               QtWidgets.QMessageBox.No)
-
-        if reply == QtWidgets.QMessageBox.Yes:
-            event.accept()
-        else:
-            event.ignore()
+        button.setGeometry(230, 80, 100, 40)
 
 
-if __name__ == '__main__':
-    app = QtWidgets.QApplication(sys.argv)
-    ex = ExampleWindow('PySide6')
-    sys.exit(app.exec())
+    def UiComponents(self):
+        self.spin = QSpinBox(self)
+        self.spin.setGeometry(340, 80, 100, 40)
+        self.spin.valueChanged.connect(self.show_result)
+
+        self.label = QLabel(self)
+        self.label.setGeometry(100, 200, 200, 40)
+
+    def show_result(self):
+        value = self.spin.value()
+        self.label.setText("Files : " + str(value))
+        file_save()
+
+    def file_save(self):
+        f = tkFileDialog.asksaveasfile(mode='w', defaultextension=".txt")
+        if f is None:
+            return
+        text2save = str(text.get(1.0, END))
+        f.write(text2save)
+        f.close()
+# немного не доделал
+if __name__ == "__main__":
+    app = QtWidgets.QApplication([])
+    window = Window()
+    window.show()
+    sys.exit(app.exec_())
