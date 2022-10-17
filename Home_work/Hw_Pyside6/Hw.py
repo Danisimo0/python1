@@ -1,49 +1,128 @@
-from PySide6.QtWidgets import QApplication, QMainWindow, QPushButton, QLabel, QVBoxLayout, QWidget
 
+import os
 import sys
+import time
+
+from PySide6.QtWidgets import QApplication, QWidget, QGridLayout, QLabel, QLineEdit, QPushButton, QSpinBox
 
 
-class Window(QMainWindow):
+class MainWindow(QWidget):
+    def __init__(self, width=640, height=480, title="title"):
+        QWidget.__init__(self)
+        self.setWindowTitle(title)
+        self.resize(width, height)
 
-    def __init__(self):
-        super().__init__()
-        self.title = 'PyQt5'
-        self.initUI()
-        self.UiComponents()
-        self.setGeometry(100, 100, 600, 400)
+        self.layout = QGridLayout()
+        self.setLayout(self.layout)
+
+        self.label_check = QLabel('Enter files: ( .xlsx, ) ; ( .pptx, ) ; ( .docx ) ) ')
+        self.layout.addWidget(self.label_check, 10, 0)
+
+        self.line_edit_path = QLineEdit('.docx')
+        self.layout.addWidget(self.line_edit_path, 1, 0)
+
+        self.widget = QSpinBox()
+        self.widget.setRange(1, 11111)
+        self.widget.setSingleStep(1)
+        self.layout.addWidget(self.widget, 0, 0)
+
+        self.push_button_create = QPushButton('Create')
+        self.layout.addWidget(self.push_button_create, 3, 0)
+        self.push_button_create.clicked.connect(self.create)
+
         self.show()
 
-    def initUI(self):
-        self.setWindowTitle(self.title)
+    def create(self):
+        spin_box_item = self.widget.value()
+        input_get_expansion_item = self.line_edit_path.text()
+        expansion = [".xlsx", ".pptx", ".docx"]
 
-        button = QPushButton('PyQt5 button', self)
+        def create_files():
+            if input_get_expansion_item in expansion:
+                for i in range(1, int(spin_box_item) + 1):
+                    new_file = open(f"temp/file{i}{input_get_expansion_item}", "w+")
+                    new_file.write("Write to me")
+                    new_file.close()
+                    self.label_check.setText("Files created")
+                    time.sleep(1)
+            else:
+                self.label_check.setText("Files incorrectly")
 
-        button.setGeometry(230, 80, 100, 40)
+        if os.path.isdir('temp'):
+            create_files()
+        else:
+            os.mkdir("temp")
+            create_files()
 
 
-    def UiComponents(self):
-        self.spin = QSpinBox(self)
-        self.spin.setGeometry(340, 80, 100, 40)
-        self.spin.valueChanged.connect(self.show_result)
+app = QApplication(sys.argv)
+mw = MainWindow(640, 480, 'My App')
+app.exec()
 
-        self.label = QLabel(self)
-        self.label.setGeometry(100, 200, 200, 40)
 
-    def show_result(self):
-        value = self.spin.value()
-        self.label.setText("Files : " + str(value))
-        file_save()
 
-    def file_save(self):
-        f = tkFileDialog.asksaveasfile(mode='w', defaultextension=".txt")
-        if f is None:
-            return
-        text2save = str(text.get(1.0, END))
-        f.write(text2save)
-        f.close()
-# немного не доделал
-if __name__ == "__main__":
-    app = QtWidgets.QApplication([])
-    window = Window()
-    window.show()
-    sys.exit(app.exec_())
+    #                                              My attempts
+
+
+
+
+
+# from PySide6.QtWidgets import QApplication, QMainWindow, QPushButton, QLabel, QVBoxLayout, QWidget
+# import sys
+# import PySide6.QtWidgets as QtWidgets
+# from PySide6.QtWidgets import QApplication, QMainWindow, QPushButton
+#
+
+#
+# class MainWindow(QWidget):
+#     def __init__(self, window_name: str):
+#         super().__init__()
+#
+#         self.window_name = window_name
+#         self.setGeometry(640, 480, 640, 480)
+#         self.setWindowTitle(self.window_name)
+#         self.layout = QtWidgets.QGridLayout()
+#
+#         self.button = QPushButton("button")
+#         self.button.clicked.connect(self.create_files)
+#         self.setCentralWidget(self.button)
+#
+#     # def create_files(self, amount=10):
+#     #     for num in range(1, amount + 1):
+#     #         with open(f'temp\new_file{num}.txt', 'w') as file:
+#     #             file.write('.txt')
+#
+#
+# if __name__ == '__main__':
+#     App = QApplication(sys.argv)
+#     main = MainWindow()
+#     sys.exit(App.exec_())
+
+
+# class ExampleWindow(QMainWindow):
+#     def __init__(self, window_name: str):
+#         super().__init__()
+#
+#         self.window_name = window_name
+#         self.setGeometry(640, 480, 640, 480)
+#         self.setWindowTitle(self.window_name)
+#         self.layout = QtWidgets.QGridLayout()
+#
+#         self.button = QPushButton("Press Me!")
+#         self.button.setGeometry(230, 80, 100, 40)
+#
+#         self.button.clicked.connect(self.create_files)
+#         self.setCentralWidget(self.button)
+#
+#     def create_files(self, amount=10):
+#         for num in range(1, amount + 1):
+#             with open(f'Temp_hw/new_file{num}.txt', 'w') as file:
+#                 file.write('')
+#         print('done')
+#
+#
+# if __name__ == '__main__':
+#     app = QtWidgets.QApplication(sys.argv)
+#     ex = ExampleWindow('Наше приложение на PySide6')
+#     ex.show()
+#     sys.exit(app.exec())
