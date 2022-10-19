@@ -41,4 +41,4 @@ cursor.execute("UPDATE Books SET tele ='1-87654321' WHERE name='a'")
 cursor.execute("DELETE FROM Books WHERE id='d'")
 cursor.execute("DROP TABLE Books")
 conn.close()
-# Накидал на быструю руку, не проверяя 
+# Накидал на быструю руку, не проверяя
