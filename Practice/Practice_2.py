@@ -12,7 +12,7 @@ max_row = worksheet.max_row
 max_column = worksheet.max_column
 
 for row in range(1, max_row + 1):
-    for column in range(5, max_column + 1):
+    for column in range(1, max_column + 1):
         match str(worksheet.cell(row, column).value):
             case "Js":
                 worksheet.cell(row=row, column=column)
