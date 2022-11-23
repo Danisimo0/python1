@@ -1,0 +1,41 @@
+.key {
+    width: 250px;
+    height: 200px;
+    background: red;
+    position: relative;
+    animation: mymove 5s infinite;
+    margin-left: 40%;
+    margin-top: 20%;
+    color: white;
+}  
+
+@keyframes mymove {
+    0%   {top: 0px; left: 0px; background: red;}
+    25%  {top: 0px; left: 100px; background: blue;}
+    50%  {top: 100px; left: 100px; background: yellow;}
+    75%  {top: 100px; left: 0px; background: green;}
+    100% {top: 0px; left: 0px; background: red;}
+}
+
+html, body {
+  width: 100%;
+  height:100%;
+}
+
+body {
+    background: linear-gradient(200deg, #ee7752, #e73c7e, #23a6d5, #23d5ab, #99ccff, #ff99cc);
+    background-size: 400% 400%;
+    animation: gradient 10s ease infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}

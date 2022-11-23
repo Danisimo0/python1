@@ -1,0 +1,138 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+
+
+.key {
+    width: 250px;
+    height: 200px;
+    background: red;
+    position: relative;
+    animation: mymove 5s infinite;
+    margin-left: 40%;
+    margin-top: 20%;
+    color: white;
+}  
+
+@keyframes mymove {
+    0%   {top: 0px; left: 0px; background: red;}
+    25%  {top: 0px; left: 100px; background: blue;}
+    50%  {top: 100px; left: 100px; background: yellow;}
+    75%  {top: 100px; left: 0px; background: green;}
+    100% {top: 0px; left: 0px; background: red;}
+}
+
+html, body {
+  width: 100%;
+  height:100%;
+}
+
+body {
+    background: linear-gradient(200deg, #ee7752, #e73c7e, #23a6d5, #23d5ab, #99ccff, #ff99cc);
+    background-size: 400% 400%;
+    animation: gradient 10s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+input {outline:none;}
+a {
+    text-decoration: none;
+    color: black;
+}
+.login {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: #fff;
+    width: 320px;
+    height: 380px;
+    padding: 30px;
+    border-radius: 10px;
+    border: 0px;
+}
+.login h2 {
+    margin-top: 30px;
+}
+.login form {
+    margin-top: 60px;
+    
+    text-align: center;
+}
+.login input {
+    width: 70%;
+    padding: 12px 20px;
+    margin: 10px 0;
+    border: 0px;
+    border-radius: 15px;
+    background-color: white;
+    font-size: 20px;
+    box-shadow: 0 0 10px rgba(122,122,122,0.5);
+}
+.login .submit{
+
+    background-color: #010202;
+    color: white;
+}
+.login .go_to_auth {
+    color: black;
+    margin-top: 20px;
+}
+
+.auth {
+    display: none;
+    align-items: center;
+    flex-direction: column;
+    background-color: #fff;
+    width: 320px;
+    height: 380px;
+    padding: 30px;
+    border-radius: 10px;
+    border: 0px;
+}
+.auth h2 {
+    margin-top: 30px;
+}
+.auth form {
+    margin-top: 60px;
+    
+    text-align: center;
+}
+.auth input {
+    width: 70%;
+    padding: 12px 20px;
+    margin: 10px 0;
+    border: 0px;
+    border-radius: 15px;
+    background-color: white;
+    font-size: 20px;
+    box-shadow: 0 0 10px rgba(122,122,122,0.5);
+}
+.auth .submit{
+
+    background-color: #25a5a5;
+    color: white;
+}
+.auth .go_to_auth {
+    color: black;
+    margin-top: 20px;
+}
+
+

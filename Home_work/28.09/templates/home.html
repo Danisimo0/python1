@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/home.css')}}">
+</head>
+<body>
+<script>
+        console.log("{{id_user}}")
+        console.log("{{session["login"]}}")
+</script>
+<section class="main">
+    <div class="menu">
+        <h2 class="nickname">{{login_user}}</h2>
+        <a href="{{url_for('exit')}}"> alt="" class="exit"></a>
+    </div>
+    <div class="content">
+        <div class="today">
+            <div class="info_panel">
+                <h2 class="title_today">Today: 11.23.2022</h2>
+                <a href="{{url_for('add_task',id_user=id_user)}}"> alt=""></a>
+            </div>
+
+            <hr class="one_hr">
+            <a href="{{url_for('get_task', id_user=id_user, id_task='12')}}" class="task" id="task_1">
+                <form action="">
+                    <input type="checkbox">
+                </form>
+                <h2>Do the first task</h2>
+            </a>
+
+            {%for i in data_task%}
+                {% if i[4] == "no" %}
+                    <a href="{{url_for('get_task', id_user=id_user, id_task=i[0])}}" class="task"  style=" margin:5px 0px;border:1px solid #0000001a; border-left:7px solid red;">
+                        <h2>{{i[2]}}</h2>
+                        <object style="margin-left: auto;display: flex;align-items: center;">
+                            <a href="{{url_for('update_task_status', id_user=id_user, id_task=i[0])}}" class="do" style="margin-right: 10px;"> alt=""></a>
+                            <a href="{{url_for('delete_task', id_user=id_user, id_task=i[0])}}" class="delete"> alt=""></a>
+
+                        </object>
+                    </a>
+                {% else %}
+
+                {% endif %}
+
+            {%endfor%}
+            {%for i in data_task%}
+                {% if i[4] == "yes" %}
+                    <a href="{{url_for('get_task', id_user=id_user, id_task=i[0])}}" class="task"  style=" margin:5px 0px;border:1px solid #0000001a; border-left:7px solid green;">
+                        <h2>{{i[2]}}</h2>
+                        <object style="margin-left: auto;display: flex;align-items: center;">
+                            <a href="" class="do" style="margin-right: 10px;"> alt=""></a>
+                            <a href="{{url_for('delete_task', id_user=id_user, id_task=i[0])}}" class="delete"> alt=""></a>
+
+                        </object>
+                    </a>
+                {% else %}
+                {% endif %}
+            {%endfor%}
+
+        </div>
+ 
+    </div>
+</section>
+
+</body>
+</html>
