@@ -48,3 +48,6 @@ def hello_world():
     # print(data2)
 
     return f"<ul>{lists}</ul>"
+
+if __name__ == '__main__':
+    app.run()
