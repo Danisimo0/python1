@@ -6,10 +6,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-yoyieljoys5*mca-(csazc^mg&+m3f23ls#sod14d63-rbs3q*'
 
+
 DEBUG = True
 SQLITE = True
 
 ALLOWED_HOSTS = ['*']
+
 
 
 INSTALLED_APPS = [
@@ -53,8 +55,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'django_settings.wsgi.application'
 
 
-
-
 if SQLITE:
     DATABASES = {
         'default': {
@@ -69,10 +69,11 @@ else:
             'NAME': 'django_db',
             'USER': 'django_usr',
             'PASSWORD': '12345qwertY!',
-            'HOST': '127.0.0.1',
+            'HOST': '127.0.0.1',  # localhost
             'PORT': '5432',
         }
     }
+
 
 
 
@@ -93,7 +94,6 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 
-
 LANGUAGE_CODE = 'ru-RU'
 
 TIME_ZONE = 'UTC'
@@ -101,9 +101,8 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-x
 
 
-STATIC_URL = 'static/'
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

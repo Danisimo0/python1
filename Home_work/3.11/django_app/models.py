@@ -26,13 +26,6 @@ class Person(models.Model):
         max_length=50
     )
 
-    # class Meta:
-    #     app_label = 'django_app'
-    #     ordering = ('id',)
-    #     verbose_name = 'Задача'
-    #     verbose_name_plural = 'Задачи'
-    #     # db_table
-
 
 class Child(models.Model):
     fullname = models.CharField(
